@@ -6,13 +6,11 @@ This projects sets up an internet of things server on your Raspberry Pi. The ser
 
 This system consists of a series of sensor nodes that send sensor data in a JSON message over the network to a Raspberry Pi via MQTT.
 
-MQTT is a network protocol where a client pushes data to a broker, such as mosquitto, and the broker pushes that data to any client that has subscribed to that topic. A topic categorises the data that is sent. 
+MQTT is a network protocol where a client pushes data to a broker, such as mosquitto, and the broker pushes that data to any client that has subscribed to that topic. A topic categorises the data that is sent. Any client that is subscribed to home slash sensor will be forwarded this MQTT message.
 
-Any client that is subscribed to home slash sensor will be forwarded this MQTT message.
+NodeRED will subscribe to this topic, interpret the JSON message data and then send the data to a database to be stored and used. InfluxDB will store all the sensor data.
 
-NodeRED will subscribe to this topic, interpret the json message data and then send the data to a database to be stored and used. InfluxDB will store all the sensor data.
-
-Then a Graphana front end will query the database in order to display the data we want to see and do a whole host of other things.
+Then a Graphana front end will query the database in order to display the data.
 
 # Hardware
 * Raspberry Pi 4 (Raspbian OS 64)
