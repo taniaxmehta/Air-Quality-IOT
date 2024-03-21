@@ -12,6 +12,29 @@ NodeRED will subscribe to this topic, interpret the JSON message data and then s
 
 Then a Graphana front end will query the database in order to display the data.
 
+# Installation
+Ensure your RPi is updated
+```
+sudo apt update
+sudo apt upgrade
+```
+Install IoTStack
+```
+curl -fsSL https://raw.githubusercontent.com/SensorsIot/IOTstack/master/install.sh | bash
+sudo shutdown -r now
+```
+Run menu inside IoTStack
+```
+cd IOTstack/
+./menu.sh
+```
+Select following components
+* Grafana
+* InfluxDB
+* Mosquitto
+* Node-RED
+* Portainer-CE
+
 # Hardware
 * Raspberry Pi 4 (Raspbian OS 64)
 * Arduino Uno
