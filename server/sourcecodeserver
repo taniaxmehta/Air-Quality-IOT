@@ -1,0 +1,41 @@
+#include <ArduinoJson.h>
+#include <ArduinoJson.hpp>
+#include <WiFi.h>
+#include <PubSubClient.h>
+#include <Wire.h>
+#include <Adafruit_Sensor.h>
+#include "Adafruit_BME680.h"
+
+
+Adafruit_BME680 bme;
+
+const char* ssid = "XXXX";
+const char* password = "XXXX";
+const char* mqtt_server = "XXX.XXX.X.XX";
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+unsigned long lastMsg = 0;
+#define MSG_BUFFER_SIZE	(50)
+char msg[MSG_BUFFER_SIZE];
+int value = 0;
+
+void setup_wifi() {
+
+  delay(100);
+  // We start by connecting to a WiFi network
+  Serial.println();
+  Serial.print("Connecting to ");
+  Serial.println(ssid);
+
+  WiFi.init(AP_STA_MODE);
+  WiFi.begin(ssid, password);
+
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(500);
+    Serial.print(".");
+  }
+
+  randomSeed(micros());
+
+  S
